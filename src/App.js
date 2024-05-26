@@ -1,28 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-
+import './style.scss';
 import {
 	createBrowserRouter,
 	Route,
 	RouterProvider,
-	Link,
 	Navigate,
-	Outlet, // Corrected: Changed Redirect to Navigate
+	Outlet,
 } from 'react-router-dom';
 import Navbar from './components/navBar/Navbar';
 import Leftbar from './components/leftBar/Leftbar';
 import Rightbar from './components/rightBar/Rightbar';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import { useContext } from 'react';
+import { DarkModeContext } from './context/darkModeContext';
 
 function App() {
-	const currentUser = true;
+	const { currentUser } = useContext(AuthContext);
+	const { darkMode } = useContext(DarkModeContext);
 
 	const Layout = () => {
 		return (
-			<div>
+			<div className={`theme-${darkMode ? 'dark' : 'light'}`}>
 				<Navbar />
 				<div style={{ display: 'flex' }}>
 					<Leftbar />
@@ -51,24 +52,12 @@ function App() {
 				</ProtectedRoute>
 			),
 			children: [
-				{
-					path: '/',
-					element: <Home />,
-				},
-				{
-					path: '/profile/:id',
-					element: <Profile />,
-				},
+				{ path: '/', element: <Home /> },
+				{ path: '/profile/:id', element: <Profile /> },
 			],
 		},
-		{
-			path: '/login',
-			element: <Login />,
-		},
-		{
-			path: '/register',
-			element: <Register />,
-		},
+		{ path: '/login', element: <Login /> },
+		{ path: '/register', element: <Register /> },
 	]);
 
 	return (

@@ -1,6 +1,6 @@
 import './navbar.scss';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
@@ -11,8 +11,11 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 const Navbar = () => {
+	const { toggle, darkMode } = useContext(DarkModeContext); // Corrected from DarkMode to darkMode
+	const { currentUser } = useContext(AuthContext);
 	return (
 		<div className="navbar">
 			<div className="left">
@@ -20,7 +23,11 @@ const Navbar = () => {
 					<span>Fakebook</span>
 				</Link>
 				<HomeOutlinedIcon />
-				<Brightness4OutlinedIcon />
+				{darkMode ? (
+					<WbSunnyOutlinedIcon onClick={toggle} />
+				) : (
+					<Brightness4OutlinedIcon onClick={toggle} />
+				)}
 				<GridViewOutlinedIcon />
 				<div className="search">
 					<SearchOutlinedIcon />
@@ -36,10 +43,10 @@ const Navbar = () => {
 				<NotificationsOutlinedIcon />
 				<div className="user">
 					<img
-						src="https://images.pexels.com/photos/1822608/pexels-photo-1822608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						src={currentUser.profilePicture}
 						alt=""
 					/>
-					<span>John Doe</span>
+					<span>{currentUser.name}</span>
 				</div>
 			</div>
 		</div>
