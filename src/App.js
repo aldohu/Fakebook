@@ -16,7 +16,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
-
+import { AuthContext } from './context/authContext';
 function App() {
 	const { currentUser } = useContext(AuthContext);
 	const { darkMode } = useContext(DarkModeContext);

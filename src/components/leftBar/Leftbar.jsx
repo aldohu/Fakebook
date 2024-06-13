@@ -13,7 +13,7 @@ import Messages from '../../assets/10.png';
 import Tutorials from '../../assets/11.png';
 import Courses from '../../assets/12.png';
 import Fund from '../../assets/13.png';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/authContext';
 const Leftbar = () => {
 	const { currentUser } = useContext(AuthContext);
 	return (
