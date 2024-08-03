@@ -8,6 +8,7 @@ export const AuthContextProvider = ({ children }) => {
 	);
 
 	const login = () => {
+		// Mock user login - replace with actual logic if needed
 		setCurrentUser({
 			id: 1,
 			name: 'John Doe',
@@ -20,8 +21,13 @@ export const AuthContextProvider = ({ children }) => {
 		localStorage.setItem('user', JSON.stringify(currentUser));
 	}, [currentUser]);
 
+	const logout = () => {
+		setCurrentUser(null);
+		localStorage.removeItem('user');
+	};
+
 	return (
-		<AuthContext.Provider value={{ currentUser, login }}>
+		<AuthContext.Provider value={{ currentUser, login, logout }}>
 			{children}
 		</AuthContext.Provider>
 	);

@@ -17,6 +17,7 @@ import Register from './pages/register/Register';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
+
 function App() {
 	const { currentUser } = useContext(AuthContext);
 	const { darkMode } = useContext(DarkModeContext);
@@ -43,22 +44,25 @@ function App() {
 		return children;
 	};
 
-	const router = createBrowserRouter([
-		{
-			path: '/',
-			element: (
-				<ProtectedRoute>
-					<Layout />
-				</ProtectedRoute>
-			),
-			children: [
-				{ path: '/', element: <Home /> },
-				{ path: '/profile/:id', element: <Profile /> },
-			],
-		},
-		{ path: '/login', element: <Login /> },
-		{ path: '/register', element: <Register /> },
-	]);
+	const router = createBrowserRouter(
+		[
+			{
+				path: '/',
+				element: (
+					<ProtectedRoute>
+						<Layout />
+					</ProtectedRoute>
+				),
+				children: [
+					{ path: '/', element: <Home /> },
+					{ path: '/profile/:id', element: <Profile /> },
+				],
+			},
+			{ path: '/login', element: <Login /> },
+			{ path: '/register', element: <Register /> },
+		],
+		{ basename: '/Fakebook' },
+	);
 
 	return (
 		<div className="App">
