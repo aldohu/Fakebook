@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Fakebook/static/css/main.c77f7489.css",
+    "main.js": "/Fakebook/static/js/main.6fd648df.js",
+    "static/js/453.14d26921.chunk.js": "/Fakebook/static/js/453.14d26921.chunk.js",
+    "index.html": "/Fakebook/index.html",
+    "main.c77f7489.css.map": "/Fakebook/static/css/main.c77f7489.css.map",
+    "main.6fd648df.js.map": "/Fakebook/static/js/main.6fd648df.js.map",
+    "453.14d26921.chunk.js.map": "/Fakebook/static/js/453.14d26921.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c77f7489.css",
+    "static/js/main.6fd648df.js"
+  ]
+}
